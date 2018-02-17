@@ -13,11 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit from surnia device
 $(call inherit-product, device/motorola/surnia/full_surnia.mk)
+
+# Inherit some common pissel stuff.
+TARGET_ARCH := arm
+TARGET_BOOT_ANIMATION_RES := 720
+TARGET_DENSITY := hdpi
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := surnia
-PRODUCT_NAME := lineage_surnia
+PRODUCT_NAME := aosp_surnia
 PRODUCT_BRAND := Motorola
 PRODUCT_MANUFACTURER := Motorola
 PRODUCT_RELEASE_NAME := surnia

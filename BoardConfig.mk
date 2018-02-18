@@ -31,6 +31,16 @@ KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 TARGET_OTA_ASSERT_DEVICE := XT1514,XT1521,XT1524,XT1526,XT1527,XT1523,surnia_uds,surnia_umts,surnia,surnia_udstv
 TARGET_RELEASETOOLS_EXTENSIONS := # Not a typo, surnia doesn't need fw extraction script
 
+# Dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_surnia
 TARGET_RECOVERY_DEVICE_MODULES := libinit_surnia
